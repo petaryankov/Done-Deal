@@ -34,18 +34,18 @@ export default function Header() {
                                 className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
                             >
                                 <span className="sr-only">Open main menu</span>
-                                <Bars3Icon aria-hidden="true" className="size-6" />
+                                <Bars3Icon aria-hidden="true" className="size-8 text-red-600 hover:bg-gray-100" />
                             </button>
                         </div>
                         <div className="hidden lg:flex lg:gap-x-12">
-                            {navigation.map((item) => (
-                                <Link key={item.name} to={item.path} className="text-sm/6 font-semibold text-gray-900">
+                            {navigation.map((item) => (//block rounded-lg px-3 py-2 text-base/7
+                                <Link key={item.name} to={item.path} className="block rounded-lg px-3 py-1 text-m/6 font-bold text-red-600 hover:bg-gray-100">
                                     {item.name}
                                 </Link>
                             ))}
                         </div>
                         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                            <Link to="/login" className="text-sm/6 font-semibold text-gray-900">
+                            <Link to="/login" className="text-m/6 font-bold text-red-600 block rounded-lg px-3 py-1 hover:bg-gray-100">
                                 Log in <span aria-hidden="true">&rarr;</span>
                             </Link>
                         </div>
@@ -68,7 +68,7 @@ export default function Header() {
                                     className="-m-2.5 rounded-md p-2.5 text-gray-700"
                                 >
                                     <span className="sr-only">Close menu</span>
-                                    <XMarkIcon aria-hidden="true" className="size-6" />
+                                    <XMarkIcon aria-hidden="true" className="size-7 text-red-600 hover:bg-gray-100" />
                                 </button>
                             </div>
                             <div className="mt-6 flow-root">
@@ -78,7 +78,7 @@ export default function Header() {
                                             <Link
                                                 key={item.name}
                                                 to={item.path}
-                                                className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                                                className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-bold text-red-600 hover:bg-gray-100"
                                             >
                                                 {item.name}
                                             </Link>
@@ -87,7 +87,7 @@ export default function Header() {
                                     <div className="py-6">
                                         <Link
                                             to="/login"
-                                            className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                                            className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-bold text-red-600 hover:bg-gray-100"
                                         >
                                             Log in
                                         </Link>
