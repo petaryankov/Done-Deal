@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 
 const navigation = [
     { name: 'Home', path: '/' },
-    { name: 'Catalog', path: '/catalog' },
+    { name: 'Offers', path: '/offers' },
     { name: 'Register', path: '/register' },
     { name: 'Create', path: '/create' },
     { name: 'Account', path: '/account' },
@@ -22,7 +22,7 @@ export default function Header() {
                                 <span className="sr-only">Your Company</span>
                                 <img
                                     alt="logo"
-                                    src="public\images\donedeal-logo.png"
+                                    src="/images/donedeal-logo.png"
                                     className="h-8 w-auto"
                                 />
                             </Link>
@@ -38,7 +38,7 @@ export default function Header() {
                             </button>
                         </div>
                         <div className="hidden lg:flex lg:gap-x-12">
-                            {navigation.map((item) => (//block rounded-lg px-3 py-2 text-base/7
+                            {navigation.map((item) => (
                                 <Link key={item.name} to={item.path} className="block rounded-lg px-3 py-1 text-m/6 font-bold text-red-600 hover:bg-gray-100">
                                     {item.name}
                                 </Link>
@@ -58,7 +58,7 @@ export default function Header() {
                                     <span className="sr-only">Your Company</span>
                                     <img
                                         alt="logo"
-                                        src="public\images\donedeal-logo.png"
+                                        src="/images/donedeal-logo.png"
                                         className="h-8 w-auto"
                                     />
                                 </Link>

@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
-import CatalogItem from "../catalog-item/CatalogItem";
+import Offer from "../offer/Offer";
 
-export default function Catalog() {
-    const [products, setProducts] = useState([]);
+export default function Offers() {
+    const [offers, setOffers] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3030/jsonstore/catalog')
+        fetch('http://localhost:3030/jsonstore/offers')
             .then(res => res.json())
             .then(result => {
                 const catalog = Object.values(result)
-                setProducts(catalog);
+                setOffers(catalog);
             });
     }, []);
 
@@ -20,8 +20,8 @@ export default function Catalog() {
                     <h2 className="text-3xl text-center font-bold tracking-tight text-red-700">Offers</h2>
 
                     <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-                        {products.map((product) => (
-                            <CatalogItem key={product._id} product={product} />
+                        {offers.map((offer) => (
+                            <Offer key={offer._id} offer={offer} />
                         ))}
                     </div>
                 </div>
