@@ -1,10 +1,11 @@
 import './App.css'
+import Home from './components/home/Home'
 
 function App() {
 
   return (
     <>
-      <h1>My DoneDeal App</h1>
+      <Home />
     </>
   )
 }
