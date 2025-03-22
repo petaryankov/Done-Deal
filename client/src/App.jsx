@@ -4,6 +4,7 @@ import Home from './components/home/Home'
 import Catalog from './components/products/catalog/Catalog'
 import CatalogItem from './components/products/catalog-item/CatalogItem'
 import './App.css'
+import ErrorNotFound from './components/error-not-found/ErrorNotFond'
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
         <Route path='/create' element={<h1>Create</h1>} />
         <Route path='/account' element={<h1>Account</h1>} />
         <Route path='/login' element={<h1>Login</h1>} />
+        <Route path='/*' element={<ErrorNotFound />} />
       </Routes>
     </>
   )
