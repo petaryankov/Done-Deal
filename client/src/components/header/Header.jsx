@@ -54,11 +54,11 @@ export default function Header() {
                         <div className="fixed inset-0 z-50" />
                         <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
                             <div className="flex items-center justify-between">
-                                <Link to="#" className="-m-1.5 p-1.5">
+                                <Link to="/" className="-m-1.5 p-1.5">
                                     <span className="sr-only">Your Company</span>
                                     <img
-                                        alt=""
-                                        src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
+                                        alt="logo"
+                                        src="public\images\donedeal-logo.png"
                                         className="h-8 w-auto"
                                     />
                                 </Link>
