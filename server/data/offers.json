@@ -1,15 +1,21 @@
 {
-    "p1": {
+    "1": {
         "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
         "type": "Laptop",
         "model": "HP NEX-SPR-LT-11HP250G9I3",
         "year": 2020,
-        "description": "Best ever",
         "price": "$235",
         "img": "https://s13emagst.akamaized.net/products/35828/35827731/images/res_7dda5e376c3fb824e9d62e80b131835a.jpg?width=720&height=720&hash=C909C6F99164F7242A20AFCD0D87F888",
-        "_id": 1
+        "_id": 1,
+        "description": "The Laptop is a very well budget offer and covers all you need for browsing",
+        "highlights": [
+            "Hand cut and sewn locally",
+            "Dyed with our proprietary colors",
+            "Pre-washed & pre-shrunk",
+            "Ultra-soft 100% cotton"
+        ]
     },
-    "p2": {
+    "2": {
         "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
         "type": "Laptop",
         "model": "HP NEX-SPR-LT-15HP250G9I3",
@@ -17,9 +23,15 @@
         "description": "Budget laptop",
         "price": "$200",
         "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGNGXc-5Gry-xDhe1MdHyq_iip8Tc9W_rqTj2dk1mX8VtNkMtmHIfNvET_HRAVqTv8s74&usqp=CAU",
-        "_id": 2
+        "_id": 2,
+        "highlights": [
+            "Hand cut and sewn locally",
+            "Dyed with our proprietary colors",
+            "Pre-washed & pre-shrunk",
+            "Ultra-soft 100% cotton"
+        ]
     },
-    "p3": {
+    "3": {
         "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
         "type": "Laptop",
         "model": "GAMING League i5-6500",
@@ -27,9 +39,14 @@
         "description": "Very good with fast 4 core new generation procesor and touch screen with 4k resolution. Free keybord and mouse included",
         "price": "$285",
         "img": "https://s13emagst.akamaized.net/products/35828/35827731/images/res_7dda5e376c3fb824e9d62e80b131835a.jpg?width=720&height=720&hash=C909C6F99164F7242A20AFCD0D87F888",
-        "_id": 3
+        "_id": 3,
+        "highlights": [
+            "4 core procesor",
+            "Long battery life",
+            "Gaming Laptop"
+        ]
     },
-    "p4": {
+    "4": {
         "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
         "type": "Laptop",
         "model": "Lenovo Legion Y850",
@@ -37,9 +54,15 @@
         "description": "Best choice for the market",
         "price": "$1235",
         "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGNGXc-5Gry-xDhe1MdHyq_iip8Tc9W_rqTj2dk1mX8VtNkMtmHIfNvET_HRAVqTv8s74&usqp=CAU",
-        "_id": 4
+        "_id": 4,
+        "highlights": [
+            "Last year model",
+            "Gaming Laptop",
+            "Fast procesor",
+            "Touch screen"
+        ]
     },
-    "p5": {
+    "5": {
         "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
         "type": "Laptop",
         "model": "ASUS GAMING",
@@ -47,6 +70,12 @@
         "description": "Best choice for the market",
         "price": "$1435",
         "img": "https://s13emagst.akamaized.net/products/35828/35827731/images/res_7dda5e376c3fb824e9d62e80b131835a.jpg?width=720&height=720&hash=C909C6F99164F7242A20AFCD0D87F888",
-        "_id": 5
+        "_id": 5,
+        "highlights": [
+            "Current year model",
+            "Modern design",
+            "Bewst quality display",
+            "Ultra-slim"
+        ]
     }
 }
