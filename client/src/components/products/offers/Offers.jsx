@@ -8,7 +8,9 @@ export default function Offers() {
 
     useEffect(() => {
         setLoading(true);
-        fetch('http://localhost:3030/jsonstore/offers')
+        const abortController = new AbortController();
+
+        fetch('http://localhost:3030/jsonstore/offers', { signal: abortController.signal })
             .then(res => res.json())
             .then(result => {
                 const catalog = Object.values(result)
@@ -19,6 +21,10 @@ export default function Offers() {
                 console.error('Error fetching offer:', error);
                 setLoading(false);
             });
+
+            return () => {
+                abortController.abort();
+            }
     }, []);
 
     if (loading) {
