@@ -7,6 +7,7 @@ import ErrorNotFound from './components/error-not-found/ErrorNotFond'
 import './App.css'
 import Login from './components/users/login/Login'
 import Register from './components/users/regiter/Register'
+import Account from './components/users/account/Account'
 
 function App() {
 
@@ -19,7 +20,7 @@ function App() {
                 <Route path='/offers/:offerId' element={<OfferDetails />} />
                 <Route path='/register' element={<Register />} />
                 <Route path='/create' element={<h1>Create</h1>} />
-                <Route path='/account' element={<h1>Account</h1>} />
+                <Route path='/account' element={<Account />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/*' element={<ErrorNotFound />} />
             </Routes>
