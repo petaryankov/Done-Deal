@@ -1,17 +1,29 @@
 import { useState, useEffect } from "react";
 import Offer from "../offer/Offer";
+import Loader from "../../loader/Loader";
 
 export default function Offers() {
     const [offers, setOffers] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
+        setLoading(true);
         fetch('http://localhost:3030/jsonstore/offers')
             .then(res => res.json())
             .then(result => {
                 const catalog = Object.values(result)
                 setOffers(catalog);
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.error('Error fetching offer:', error);
+                setLoading(false);
             });
     }, []);
+
+    if (loading) {
+        return <Loader />
+    }
 
     return (
         <>
