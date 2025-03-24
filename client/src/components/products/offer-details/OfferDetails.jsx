@@ -115,7 +115,7 @@ export default function OfferDetails() {
                     <ol role="list" className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
                         <li key={offer._id}>
                             <div className="flex items-center">
-                                <Link to={offer.img} className="mr-2 text-sm font-medium text-gray-900">
+                                <Link to={offer.img} className="mr-2 text-sm font-medium text-gray-900 ml-30">
                                     {offer.type}
                                 </Link>
                                 <svg
