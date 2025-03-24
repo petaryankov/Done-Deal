@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { StarIcon } from '@heroicons/react/20/solid';
 import { Link, useParams, useNavigate } from 'react-router';
 import Loader from '../../loader/Loader';
+import ErrorNotFound from '../../error-not-found/ErrorNotFond';
 
 const reviews = { href: '#', average: 4, totalCount: 117 };
 
@@ -52,7 +53,7 @@ export default function OfferDetails() {
     }
 
     if (!offer) {
-        return <div>Offer not found or loading error!</div>;
+        return <ErrorNotFound />;
     }
 
     return (
