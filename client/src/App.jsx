@@ -4,11 +4,12 @@ import Home from './components/home/Home'
 import Offers from './components/products/offers/Offers'
 import OfferDetails from './components/products/offer-details/OfferDetails'
 import ErrorNotFound from './components/error-not-found/ErrorNotFond'
-import './App.css'
 import Login from './components/users/login/Login'
 import Register from './components/users/regiter/Register'
 import Account from './components/users/account/Account'
 import CreateOffer from './components/products/create-offer/createOffer'
+import EditOffer from './components/products/edit-offer/EditOffer'
+import './App.css'
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
                 <Route path='/' element={<Home />} />
                 <Route path='/offers' element={<Offers />} />
                 <Route path='/offers/:offerId' element={<OfferDetails />} />
+                <Route path='/edit/:offerId' element={<EditOffer />} />
                 <Route path='/register' element={<Register />} />
                 <Route path='/create' element={<CreateOffer/>} />
                 <Route path='/account' element={<Account />} />
