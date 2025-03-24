@@ -8,9 +8,8 @@ export default function Offers() {
 
     useEffect(() => {
         setLoading(true);
-        const abortController = new AbortController();
 
-        fetch('http://localhost:3030/jsonstore/offers', { signal: abortController.signal })
+        fetch('http://localhost:3030/jsonstore/offers')
             .then(res => res.json())
             .then(result => {
                 const catalog = Object.values(result)
@@ -22,9 +21,6 @@ export default function Offers() {
                 setLoading(false);
             });
 
-            return () => {
-                abortController.abort();
-            }
     }, []);
 
     if (loading) {
