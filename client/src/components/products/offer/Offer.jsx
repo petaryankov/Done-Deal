@@ -11,7 +11,7 @@ export default function Offer({
                     src={offer.img}
                     className="aspect-square w-full rounded-lg bg-gray-200 object-cover group-hover:opacity-75 xl:aspect-7/8"
                 />
-                <h3 className="mt-4 text-sm text-gray-700">{offer.description}</h3>
+                <h3 className="mt-4 text-sm text-gray-700">{offer.type}</h3>
                 <p className="mt-1 text-lg font-medium text-gray-900">{offer.price}</p>
                 <p className="mt-1 text-sm text-gray-500">{offer.year} year</p>
             </Link>
