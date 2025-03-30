@@ -6,17 +6,17 @@ import { UserContext } from "../../../api/contexts/UserContext";
 export default function Login() {
 
     const navigate = useNavigate();
-    const {userLoginHandler} = useContext(UserContext)
+    const { userLoginHandler } = useContext(UserContext)
     const { login } = useLogin();
 
 
 
-    const loginHandler = async (_,formData) => {
-        
-        const {email, password} = Object.fromEntries(formData);
-        
-        const authData = await login(email, password);  
-        
+    const loginHandler = async (_, formData) => {
+
+        const { email, password } = Object.fromEntries(formData);
+
+        const authData = await login(email, password);
+
         userLoginHandler(authData);
 
         navigate('/offers');
@@ -27,14 +27,6 @@ export default function Login() {
 
     return (
         <>
-            {/*
-          This example requires updating your template:
-  
-          ```
-          <html class="h-full bg-white">
-          <body class="h-full">
-          ```
-        */}
             <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 mt-20">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                     <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-red-600">
