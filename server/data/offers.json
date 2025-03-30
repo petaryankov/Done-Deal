@@ -1,13 +1,14 @@
 {
     "1": {
-        "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
-        "type": "Computer",
+        "_id": 1,
+        "type": "Laptop",
         "model": "HP NEX-SPR-LT-11HP250G9I3",
         "year": 2020,
         "price": "$535",
-        "img": "https://s13emagst.akamaized.net/products/35828/35827731/images/res_7dda5e376c3fb824e9d62e80b131835a.jpg?width=720&height=720&hash=C909C6F99164F7242A20AFCD0D87F888",
-        "_id": 1,
+        "phone": "0888123456",
+        "username": "Niki",
         "description": "The Laptop is a very well budget offer and covers all you need for browsing",
+        "img": "https://s13emagst.akamaized.net/products/35828/35827731/images/res_7dda5e376c3fb824e9d62e80b131835a.jpg?width=720&height=720&hash=C909C6F99164F7242A20AFCD0D87F888",
         "highlights": [
             "Hand cut and sewn locally",
             "Dyed with our proprietary colors",
@@ -16,14 +17,15 @@
         ]
     },
     "2": {
-        "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+        "_id": 2,
         "type": "Laptop",
         "model": "HP NEX-SPR-LT-15HP250G9I3",
         "year": 2021,
-        "description": "Budget laptop",
         "price": "$200",
+        "phone": "0888723456",
+        "username": "Todor",
+        "description": "Budget laptop",
         "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGNGXc-5Gry-xDhe1MdHyq_iip8Tc9W_rqTj2dk1mX8VtNkMtmHIfNvET_HRAVqTv8s74&usqp=CAU",
-        "_id": 2,
         "highlights": [
             "Hand cut and sewn locally",
             "Dyed with our proprietary colors",
@@ -32,14 +34,15 @@
         ]
     },
     "3": {
-        "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+        "_id": 3,
         "type": "Laptop",
         "model": "GAMING League i5-6500",
         "year": 2023,
-        "description": "Very good with fast 4 core new generation procesor and touch screen with 4k resolution. Free keybord and mouse included",
         "price": "$285",
+        "phone": "0888623456",
+        "username": "Joro",
+        "description": "Very good with fast 4 core new generation procesor and touch screen with 4k resolution. Free keybord and mouse included",
         "img": "https://s13emagst.akamaized.net/products/35828/35827731/images/res_7dda5e376c3fb824e9d62e80b131835a.jpg?width=720&height=720&hash=C909C6F99164F7242A20AFCD0D87F888",
-        "_id": 3,
         "highlights": [
             "4 core procesor",
             "Long battery life",
@@ -47,14 +50,15 @@
         ]
     },
     "4": {
-        "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+        "_id": 4,
         "type": "Laptop",
         "model": "Lenovo Legion Y850",
         "year": 2024,
-        "description": "Best choice for the market",
         "price": "$1235",
+        "phone": "0888723456",
+        "username": "Kiro",
+        "description": "Best choice for the market",
         "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGNGXc-5Gry-xDhe1MdHyq_iip8Tc9W_rqTj2dk1mX8VtNkMtmHIfNvET_HRAVqTv8s74&usqp=CAU",
-        "_id": 4,
         "highlights": [
             "Last year model",
             "Gaming Laptop",
@@ -63,14 +67,15 @@
         ]
     },
     "5": {
-        "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+        "_id": 5,
         "type": "Laptop",
         "model": "ASUS GAMING",
         "year": 2025,
-        "description": "Best choice for the market",
         "price": "$1435",
+        "phone": "0888323456",
+        "username": "Asen",
+        "description": "Best choice for the market",
         "img": "https://s13emagst.akamaized.net/products/35828/35827731/images/res_7dda5e376c3fb824e9d62e80b131835a.jpg?width=720&height=720&hash=C909C6F99164F7242A20AFCD0D87F888",
-        "_id": 5,
         "highlights": [
             "Current year model",
             "Modern design",

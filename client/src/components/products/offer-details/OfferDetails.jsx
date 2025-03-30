@@ -1,16 +1,12 @@
-import { useEffect, useState } from 'react';
-import { StarIcon } from '@heroicons/react/20/solid';
+import { useEffect, useState, useContext } from 'react';
 import { Link, useParams, useNavigate } from 'react-router';
 import Loader from '../../loader/Loader';
 import ErrorNotFound from '../../error-not-found/ErrorNotFond';
+import { UserContext } from '../../../api/contexts/UserContext';
 
-const reviews = { href: '#', average: 4, totalCount: 117 };
-
-function classNames(...classes) {
-    return classes.filter(Boolean).join(' ');
-}
 
 export default function OfferDetails() {
+    const { username } = useContext(UserContext);
     const { offerId } = useParams();
     const [offer, setOffer] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -76,23 +72,19 @@ export default function OfferDetails() {
                         <img alt={offer.type} src={offer.img} className="w-full rounded-lg object-cover" />
                         <p className="text-3xl tracking-tight text-gray-900">{offer.price}</p>
 
-                        {/* Reviews */}
+                        {/* Created by */}
                         <div className="mt-6">
-                            <h3 className="sr-only">Reviews</h3>
                             <div className="flex items-center">
-                                <div className="flex items-center">
-                                    {[0, 1, 2, 3, 4].map((rating) => (
-                                        <StarIcon
-                                            key={rating}
-                                            aria-hidden="true"
-                                            className={classNames(reviews.average > rating ? 'text-gray-900' : 'text-gray-200', 'size-5 shrink-0')}
-                                        />
-                                    ))}
+                                <div className="ml-3  font-bold text-black-600 hover:text-indigo-500 mr-2">
+                                    Created by:
                                 </div>
-                                <p className="sr-only">{reviews.average} out of 5 stars</p>
-                                <a href={reviews.href} className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500">
-                                    {reviews.totalCount} reviews
-                                </a>
+                                <div className="flex items-center font-bold text-indigo-600 mr-2">
+                                    {offer.username}
+                                </div>
+                                <div className="flex items-center font-bold text-indigo-600">
+                                    {offer.phone}
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -130,21 +122,23 @@ export default function OfferDetails() {
                         </div>
 
                         {/* Edit and Delete Buttons */}
-                        <div className="mt-8 flex gap-4">
-                            <Link
-                                to={`/edit/${offerId}`}
-                                className="flex items-center justify-center w-full rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                            >
-                                Edit Offer
-                            </Link>
+                        {username === offer.username &&
+                            <div className="mt-8 flex gap-4">
+                                <Link
+                                    to={`/edit/${offerId}`}
+                                    className="flex items-center justify-center w-full rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                >
+                                    Edit Offer
+                                </Link>
 
-                            <button
-                                onClick={handleDelete}
-                                className="flex items-center justify-center w-full rounded-md bg-red-600 px-4 py-2 text-sm font-semibold text-white shadow-xs hover:bg-red-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                            >
-                                Delete Offer
-                            </button>
-                        </div>
+                                <button
+                                    onClick={handleDelete}
+                                    className="flex items-center justify-center w-full rounded-md bg-red-600 px-4 py-2 text-sm font-semibold text-white shadow-xs hover:bg-red-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                >
+                                    Delete Offer
+                                </button>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>

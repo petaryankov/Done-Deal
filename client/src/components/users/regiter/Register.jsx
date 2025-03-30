@@ -9,13 +9,13 @@ export default function Register() {
     const {register} = useRegister();
     
     const loginHandler = async (_,formData) => {
-        const {email, username, password, confirmPassword} = Object.fromEntries(formData);
+        const {email, username, phone, password, confirmPassword} = Object.fromEntries(formData);
         if (password !== confirmPassword) {
             console.error('Password missmatch!');
             return;
         }
         
-       const authData = await register(email, password, username);
+       const authData = await register(email, password, username, phone);
        
        userLoginHandler(authData);
 
@@ -26,13 +26,6 @@ export default function Register() {
 
     return (
       <>
-        {/* 
-          This example requires updating your template:
-          ``` 
-          <html class="h-full bg-white">
-          <body class="h-full">
-          ```
-        */}
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 mt-6">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-red-600">
@@ -67,6 +60,21 @@ export default function Register() {
                     id="username"
                     name="username"
                     type="text"
+                    required
+                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="phone" className="block text-sm/6 font-medium text-gray-900">
+                  Phone
+                </label>
+                <div className="mt-2">
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="number"
                     required
                     className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                   />

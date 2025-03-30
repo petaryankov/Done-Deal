@@ -1,9 +1,8 @@
 import { useContext } from 'react';
-import { Link } from 'react-router';
 import { UserContext } from '../../../api/contexts/UserContext';
 
 export default function Account() {
-  const {username, email} = useContext(UserContext);
+  const { username, email, phone } = useContext(UserContext);
 
   return (
     <>
@@ -50,6 +49,25 @@ export default function Account() {
                     name="email"
                     type="email"
                     value={email}
+                    readOnly
+                    className="block w-full rounded-md bg-gray-100 px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 sm:text-sm"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-gray-900"
+                >
+                  Phone
+                </label>
+                <div className="mt-2">
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={phone}
                     readOnly
                     className="block w-full rounded-md bg-gray-100 px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 sm:text-sm"
                   />

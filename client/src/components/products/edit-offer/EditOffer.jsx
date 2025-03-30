@@ -5,12 +5,14 @@ import Loader from '../../loader/Loader';
 export default function EditOffer() {
     const { offerId } = useParams(); // Get the offerId from the URL
     const [formData, setFormData] = useState({
-        _ownerId: '', // Can be set dynamically if needed
-        type: '',
-        model: '',
-        year: '',
-        price: '',
+        _id: '', // Can be set dynamically if needed
         img: '',
+        type: '',
+        year: '',
+        model: '',
+        price: '',
+        phone: '',
+        username: '',
         description: '',
         highlights: ['', '', '', ''], // Set initial highlights as empty strings
     });
@@ -26,12 +28,14 @@ export default function EditOffer() {
                 if (response.ok) {
                     const data = await response.json();
                     setFormData({
-                        _ownerId: data._ownerId,
-                        type: data.type,
-                        model: data.model,
-                        year: data.year,
-                        price: data.price,
+                        _id: data._id,
                         img: data.img,
+                        type: data.type,
+                        year: data.year,
+                        model: data.model,
+                        phone: data.phone,
+                        price: data.price,
+                        username: data.username,
                         description: data.description,
                         highlights: data.highlights || ['', '', '', ''],
                     });
@@ -176,6 +180,23 @@ export default function EditOffer() {
                                 name="price"
                                 type="text"
                                 value={formData.price}
+                                onChange={handleChange}
+                                required
+                                className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 sm:text-sm"
+                            />
+                        </div>
+                    </div>
+
+                    <div>
+                        <label htmlFor="phone" className="block text-sm font-medium text-gray-900">
+                            Phone
+                        </label>
+                        <div className="mt-2">
+                            <input
+                                id="phone"
+                                name="phone"
+                                type="number"
+                                value={formData.phone}
                                 onChange={handleChange}
                                 required
                                 className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 sm:text-sm"
