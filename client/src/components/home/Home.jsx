@@ -31,9 +31,6 @@ export default function Home() {
                             >
                                 Get started
                             </Link>
-                            <Link to="#" className="text-sm/6 font-semibold text-gray-900">
-                                Learn more <span aria-hidden="true">→</span>
-                            </Link>
                         </div>
                     </div>
                 </div>
