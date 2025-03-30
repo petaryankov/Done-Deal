@@ -1,10 +1,11 @@
 import { useActionState, useContext } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { UserContext } from "../../../api/contexts/UserContext";
 import { useRegister } from "../../../api/authApi";
 
 export default function Register() {
     const {userLoginHandler} = useContext(UserContext)
+    const navigate = useNavigate()
     const {register} = useRegister();
     
     const loginHandler = async (_,formData) => {
@@ -17,6 +18,8 @@ export default function Register() {
        const authData = await register(email, password, username);
        
        userLoginHandler(authData);
+
+       navigate('/offers')
     }
     const [_,loginAction, isPending] = useActionState(loginHandler);
 
