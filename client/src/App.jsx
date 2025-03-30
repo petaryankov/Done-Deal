@@ -11,6 +11,7 @@ import CreateOffer from './components/products/create-offer/createOffer'
 import EditOffer from './components/products/edit-offer/EditOffer'
 import { useState } from 'react'
 import { UserContext } from './api/contexts/UserContext'
+import Logout from './components/users/account/logout/Logout'
 import './App.css'
 
 function App() {
@@ -22,9 +23,15 @@ function App() {
 
     };
 
+    const userLogoutHandler = () => {
+        setAuthData({});
+    }
+
+
+
     return (
         <>
-            <UserContext.Provider value={{...authData, userLoginHandler}}>
+            <UserContext.Provider value={{...authData, userLoginHandler, userLogoutHandler}}>
                 <Header />
                 <Routes>
                     <Route path='/' element={<Home />} />
@@ -35,6 +42,7 @@ function App() {
                     <Route path='/create' element={<CreateOffer />} />
                     <Route path='/account' element={<Account />} />
                     <Route path='/login' element={<Login />} />
+                    <Route path='/logout' element={<Logout />} />
                     <Route path='/*' element={<ErrorNotFound />} />
                 </Routes>
             </UserContext.Provider>
