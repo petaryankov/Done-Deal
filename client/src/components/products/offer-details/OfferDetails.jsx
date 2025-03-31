@@ -72,21 +72,24 @@ export default function OfferDetails() {
                         <img alt={offer.type} src={offer.img} className="w-full rounded-lg object-cover" />
                         <p className="text-3xl tracking-tight text-gray-900">{offer.price}</p>
 
-                        {/* Created by */}
-                        <div className="mt-6">
-                            <div className="flex items-center">
-                                <div className="ml-3  font-bold text-black-600 hover:text-indigo-500 mr-2">
-                                    Created by:
-                                </div>
-                                <div className="flex items-center font-bold text-indigo-600 mr-2">
-                                    {offer.username}
-                                </div>
-                                <div className="flex items-center font-bold text-indigo-600">
-                                    {offer.phone}
-                                </div>
+                        {/* Created by only for loged users*/}
+                        {username &&
+                        
+                            <div className="mt-6">
+                                <div className="flex items-center">
+                                    <div className="ml-3  font-bold text-black-600 hover:text-indigo-500 mr-2">
+                                        Created by:
+                                    </div>
+                                    <div className="flex items-center font-bold text-indigo-600 mr-2">
+                                        {offer.username}
+                                    </div>
+                                    <div className="flex items-center font-bold text-indigo-600">
+                                        {offer.phone}
+                                    </div>
 
+                                </div>
                             </div>
-                        </div>
+                        }
                     </div>
 
                     <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pt-6 lg:pr-8 lg:pb-16">
