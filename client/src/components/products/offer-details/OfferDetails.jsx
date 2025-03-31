@@ -3,6 +3,7 @@ import { Link, useParams, useNavigate } from 'react-router';
 import Loader from '../../loader/Loader';
 import ErrorNotFound from '../../error-not-found/ErrorNotFond';
 import { UserContext } from '../../../api/contexts/UserContext';
+import offerService from '../../../services/offerService';
 
 
 export default function OfferDetails() {
@@ -10,47 +11,50 @@ export default function OfferDetails() {
     const { offerId } = useParams();
     const [offer, setOffer] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
         setLoading(true);
-        fetch(`http://localhost:3030/jsonstore/offers/${offerId}`)
-            .then((res) => res.json())
-            .then((result) => {
-                setOffer(result);
-                setLoading(false);
-            })
+        setError(false)
+        offerService.getOne(offerId)
+            .then(setOffer)
             .catch((error) => {
                 console.error('Error fetching offer:', error);
+                setError(true);
+            })
+            .finally(() => {
                 setLoading(false);
             });
     }, [offerId]);
 
-    const handleDelete = async () => {
+    const handleDelete = () => {
         const confirmed = window.confirm('Are you sure you want to delete this offer?');
         if (confirmed) {
-            try {
-                const response = await fetch(`http://localhost:3030/jsonstore/offers/${offerId}`, {
-                    method: 'DELETE',
+            setLoading(true);
+            setError(false)
+            offerService.delete(offerId)
+                .then(navigate('/offers'))
+                .catch((error) => {
+                    console.error('Error deleting offer:', error);
+                    setError(true);
+                })
+                .finally(() => {
+                    setLoading(false);
                 });
-                if (response.ok) {
-                    navigate('/offers'); // Redirect to offers
-                } else {
-                    console.error('Failed to delete offer');
-                }
-            } catch (error) {
-                console.error('Error deleting offer:', error);
-            }
         }
     };
+
 
     if (loading) {
         return <Loader />;
     }
 
-    if (!offer) {
+    if (error || !offer) {
         return <ErrorNotFound />;
     }
+
+    const isPermitted = username === offer.username || username === 'Admin';
 
     return (
         <div className="bg-white">
@@ -70,11 +74,11 @@ export default function OfferDetails() {
                         <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8"></div>
                         <h2 className="sr-only">Product information</h2>
                         <img alt={offer.type} src={offer.img} className="w-full rounded-lg object-cover" />
-                        <p className="text-3xl tracking-tight text-gray-900">{offer.price}</p>
+                        <p className="text-3xl tracking-tight text-gray-900">${offer.price}</p>
 
                         {/* Created by only for loged users*/}
                         {username &&
-                        
+
                             <div className="mt-6">
                                 <div className="flex items-center">
                                     <div className="ml-3  font-bold text-black-600 hover:text-indigo-500 mr-2">
@@ -125,7 +129,7 @@ export default function OfferDetails() {
                         </div>
 
                         {/* Edit and Delete Buttons */}
-                        {username === offer.username &&
+                        {isPermitted &&
                             <div className="mt-8 flex gap-4">
                                 <Link
                                     to={`/edit/${offerId}`}
