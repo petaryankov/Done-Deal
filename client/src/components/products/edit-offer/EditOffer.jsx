@@ -178,7 +178,7 @@ export default function EditOffer() {
                             <input
                                 id="price"
                                 name="price"
-                                type="text"
+                                type="number"
                                 value={formData.price}
                                 onChange={handleChange}
                                 required
