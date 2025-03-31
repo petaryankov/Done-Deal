@@ -11,12 +11,13 @@ export default function Offers() {
         setLoading(true);
 
         offerService.getAll()
-        .then(setOffers)
-        .catch((error) => {
-            console.error('Error fetching offer:', error);
-            setLoading(false);
-        })
-        .finally(setLoading);
+            .then(setOffers)
+            .catch((error) => {
+                console.error('Error fetching offer:', error);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
 
     }, []);
 
