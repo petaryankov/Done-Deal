@@ -9,10 +9,16 @@ export default {
 
         return offers;
     },
-    getOne(gameId) {
-        return request.get(`${baseUrl}/${gameId}`);
+    getOne(offerId) {
+        return request.get(`${baseUrl}/${offerId}`);
     },
     create(offerData) {
         return request.post(baseUrl, offerData);
+    },
+    edit(offerId, offerData) {
+        return request.put(`${baseUrl}/${offerId}`, offerData);
+    },
+    delete(offerId) {
+        return request.delete(`${baseUrl}/${offerId}`);
     }
 }
