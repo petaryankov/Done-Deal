@@ -58,16 +58,19 @@ export default function Account() {
 
               <div>
                 <label
-                  htmlFor="email"
+                  htmlFor="phone"
                   className="block text-sm font-medium text-gray-900"
                 >
                   Phone
                 </label>
                 <div className="mt-2">
                   <input
-                    id="email"
-                    name="email"
-                    type="email"
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    min={10}
+                    max={10}
+                    placeholder="Enter 10-digit phone number"
                     value={phone}
                     readOnly
                     className="block w-full rounded-md bg-gray-100 px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 sm:text-sm"

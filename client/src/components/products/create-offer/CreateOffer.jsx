@@ -90,7 +90,6 @@ export default function CreateOffer() {
                                 <option value="Smartphone">Smartphone</option>
                                 <option value="Smartwatch">Smartwatch</option>
                             </select>
-                            {/* {errors.type && <p className="text-red-600 text-sm">{errors.type}</p>} */}
                         </div>
                     </div>
 
@@ -162,6 +161,7 @@ export default function CreateOffer() {
                                 type="tel"
                                 minLength={10}
                                 maxLength={10}
+                                placeholder="Enter 10-digit phone number"
                                 value={formData.phone}
                                 onChange={handleChange}
                                 required
