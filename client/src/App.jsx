@@ -40,9 +40,9 @@ function App() {
                     <Route path='/offers/:offerId' element={<OfferDetails />} />
                     <Route path='/edit/:offerId' element={<EditOffer />} />
                     <Route path='/user-offers/:username' element={<UserOffers />} />
-                    <Route path='/register' element={<Register />} />
                     <Route path='/create' element={<CreateOffer />} />
                     <Route path='/account' element={<Account />} />
+                    <Route path='/register' element={<Register />} />
                     <Route path='/login' element={<Login />} />
                     <Route path='/logout' element={<Logout />} />
                     <Route path='/*' element={<ErrorNotFound />} />
