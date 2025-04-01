@@ -1,3 +1,4 @@
+import { Link } from 'react-router';
 import { useContext } from 'react';
 import { UserContext } from '../../../api/contexts/UserContext';
 
@@ -72,6 +73,12 @@ export default function Account() {
                     className="block w-full rounded-md bg-gray-100 px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 sm:text-sm"
                   />
                 </div>
+                <Link
+                  to={`/user-offers/${username}`}
+                  className="flex items-center justify-center w-full rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mt-8"
+                >
+                  {username} offers
+                </Link>
               </div>
             </div>
           </form>

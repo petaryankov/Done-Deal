@@ -1,4 +1,6 @@
 import { Route, Routes } from 'react-router'
+import { useState } from 'react'
+import { UserContext } from './api/contexts/UserContext'
 import Header from './components/header/Header'
 import Home from './components/home/Home'
 import Offers from './components/products/offers/Offers'
@@ -9,9 +11,8 @@ import Register from './components/users/regiter/Register'
 import Account from './components/users/account/Account'
 import CreateOffer from './components/products/create-offer/createOffer'
 import EditOffer from './components/products/edit-offer/EditOffer'
-import { useState } from 'react'
-import { UserContext } from './api/contexts/UserContext'
 import Logout from './components/users/account/logout/Logout'
+import UserOffers from './components/products/user-offers/UserOffers'
 import './App.css'
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
                     <Route path='/offers' element={<Offers />} />
                     <Route path='/offers/:offerId' element={<OfferDetails />} />
                     <Route path='/edit/:offerId' element={<EditOffer />} />
+                    <Route path='/user-offers/:username' element={<UserOffers />} />
                     <Route path='/register' element={<Register />} />
                     <Route path='/create' element={<CreateOffer />} />
                     <Route path='/account' element={<Account />} />
