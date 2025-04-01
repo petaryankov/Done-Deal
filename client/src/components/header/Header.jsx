@@ -3,6 +3,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useContext, useState } from "react";
 import { Link } from 'react-router';
 import { UserContext } from '../../api/contexts/UserContext';
+import UserIcon from '../users/icon/UserIcon';
 
 const navigation = [
     { name: 'Home', path: '/' },
@@ -28,7 +29,6 @@ export default function Header() {
                 <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
                     <div className="flex lg:flex-1">
                         <Link to="/" className="-m-1.5 p-1.5">
-                            <span className="sr-only">Your Company</span>
                             <img
                                 alt="logo"
                                 src="/images/donedeal-logo.png"
@@ -63,7 +63,7 @@ export default function Header() {
                         :
                         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
                             <Link to="/account" className="text-m/6 font-bold text-red-600 block rounded-lg px-3 py-1 hover:bg-gray-100">
-                                {username} <span aria-hidden="true"></span>
+                                {username}
                             </Link>
                             <Link to="/logout" className="text-m/6 font-bold text-red-600 block rounded-lg px-3 py-1 hover:bg-gray-100">
                                 Logout <span aria-hidden="true">&rarr;</span>
