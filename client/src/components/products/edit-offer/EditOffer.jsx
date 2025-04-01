@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router';
 import Loader from '../../loader/Loader';
+import offerService from '../../../services/offerService';
 
 export default function EditOffer() {
     const { offerId } = useParams(); // Get the offerId from the URL
@@ -17,37 +18,35 @@ export default function EditOffer() {
         highlights: ['', '', '', ''], // Set initial highlights as empty strings
     });
 
-    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
 
     // Fetch the current offer details to populate the form
     useEffect(() => {
-        const fetchOffer = async () => {
-            try {
-                const response = await fetch(`http://localhost:3030/jsonstore/offers/${offerId}`);
-                if (response.ok) {
-                    const data = await response.json();
-                    setFormData({
-                        _id: data._id,
-                        img: data.img,
-                        type: data.type,
-                        year: data.year,
-                        model: data.model,
-                        phone: data.phone,
-                        price: data.price,
-                        username: data.username,
-                        description: data.description,
-                        highlights: data.highlights || ['', '', '', ''],
-                    });
-                } else {
-                    console.error('Error fetching offer');
-                }
-            } catch (error) {
+        setIsLoading(true)
+        offerService.getOne(offerId)
+            .then((data) => {
+                setFormData({
+                    _id: data._id,
+                    img: data.img,
+                    type: data.type,
+                    year: data.year,
+                    model: data.model,
+                    phone: data.phone,
+                    price: data.price,
+                    username: data.username,
+                    description: data.description,
+                    highlights: data.highlights || ['', '', '', ''],
+                });
+            })
+            .catch((error) => {
                 console.error('Error fetching offer:', error);
-            }
-        };
+                alert("Something went wrong while fetching the offer. Please try again.");
+            })
+            .finally(() => {
+                setIsLoading(false);
+            });
 
-        fetchOffer();
     }, [offerId]);
 
     // Handle form input changes
@@ -72,30 +71,18 @@ export default function EditOffer() {
     // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setIsSubmitting(true);
+        setIsLoading(true);
 
-        try {
-            const response = await fetch(`http://localhost:3030/jsonstore/offers/${offerId}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
+        offerService.edit(offerId, formData)
+            .then(navigate(`/offers/${offerId}`))
+            .catch((error) => {
+                console.error('Error updating offer:', error);
+                alert("Something went wrong while updating the offer. Please try again.");
+            })
+            .finally(() => {
+                setIsLoading(false);
             });
 
-            if (response.ok) {
-                const data = await response.json();
-                console.log('Product updated successfully:', data);
-                // Redirect after successful update
-                navigate(`/offers/${offerId}`);
-            } else {
-                console.error('Error updating product');
-            }
-        } catch (error) {
-            console.error('Error:', error);
-        } finally {
-            setIsSubmitting(false);
-        }
     };
 
     // Handle cancel button click 
@@ -121,15 +108,20 @@ export default function EditOffer() {
                             Product Type
                         </label>
                         <div className="mt-2">
-                            <input
+                            <select
                                 id="type"
                                 name="type"
-                                type="text"
                                 value={formData.type}
                                 onChange={handleChange}
                                 required
                                 className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 sm:text-sm"
-                            />
+                            >
+                                <option value="" disabled>Select a product type</option>
+                                <option value="Laptop">Laptop</option>
+                                <option value="Tablet">Tablet</option>
+                                <option value="Smartphone">Smartphone</option>
+                                <option value="Smartwatch">Smartwatch</option>
+                            </select>
                         </div>
                     </div>
 
@@ -161,6 +153,8 @@ export default function EditOffer() {
                                 id="year"
                                 name="year"
                                 type="number"
+                                min={2010}
+                                max={2025}
                                 value={formData.year}
                                 onChange={handleChange}
                                 required
@@ -179,6 +173,7 @@ export default function EditOffer() {
                                 id="price"
                                 name="price"
                                 type="number"
+                                min={1}
                                 value={formData.price}
                                 onChange={handleChange}
                                 required
@@ -195,7 +190,10 @@ export default function EditOffer() {
                             <input
                                 id="phone"
                                 name="phone"
-                                type="number"
+                                type="tel"
+                                minLength={10}
+                                maxLength={10}
+                                placeholder="Enter 10-digit phone number"
                                 value={formData.phone}
                                 onChange={handleChange}
                                 required
@@ -261,15 +259,16 @@ export default function EditOffer() {
                         <button
                             type="submit"
                             className="mr-2 flex w-full justify-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold text-white shadow-xs hover:bg-red-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                            disabled={isSubmitting}
+                            disabled={isLoading}
                         >
-                            {isSubmitting ? 'Updating...' : 'Update Product'}
+                            {isLoading ? 'Updating...' : 'Update Product'}
                         </button>
 
                         {/* Cancel Button */}
                         <button
                             type="button"
                             onClick={handleCancel}
+                            disabled={isLoading}
                             className="flex w-full justify-center rounded-md bg-gray-600 px-3 py-1.5 text-sm font-semibold text-white shadow-xs hover:bg-gray-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                         >
                             Cancel
