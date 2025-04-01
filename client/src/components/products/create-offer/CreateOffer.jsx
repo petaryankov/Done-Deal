@@ -1,11 +1,13 @@
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { UserContext } from '../../../api/contexts/UserContext';
+import offerService from '../../../services/offerService';
+import Loader from '../../loader/Loader';
 
 export default function CreateOffer() {
     const { username } = useContext(UserContext)
     const [formData, setFormData] = useState({
-        _ownerId: '', // You can set this dynamically, possibly from the logged-in user
+        _id: '',
         type: '',
         model: '',
         year: '',
@@ -17,8 +19,8 @@ export default function CreateOffer() {
         highlights: ['', '', '', ''], // Set initial highlights as empty strings
     });
 
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const navigate = useNavigate() // Change useHistory to useNavigate
+    const [isLoading, setIsLoading] = useState(false);
+    const navigate = useNavigate()
 
     // Handle input changes for form fields
     const handleChange = (e) => {
@@ -42,36 +44,28 @@ export default function CreateOffer() {
     // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setIsSubmitting(true);
 
-        try {
-            const response = await fetch('http://localhost:3030/jsonstore/offers', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
+        setIsLoading(true);
+
+        offerService.create(formData)
+            .then(navigate('/offers'))
+            .catch((error) => {
+                console.error('Error creating offer:', error);
+                alert("Something went wrong while creating your offer. Please try again.");
+            })
+            .finally(() => {
+                setIsLoading(false);
             });
-
-            if (response.ok) {
-                const data = await response.json();
-                console.log('Product created successfully:', data);
-                // Redirect after successful creation
-                navigate('/offers'); // Use navigate() instead of history.push()
-            } else {
-                console.error('Error creating product');
-            }
-        } catch (error) {
-            console.error('Error:', error);
-        } finally {
-            setIsSubmitting(false);
-        }
     };
+
+    if (isLoading) {
+        return <Loader />
+    }
 
     return (
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 mt-20">
             <div className="sm:mx-auto sm:w-full sm:max-w-lg">
-                <h2 className="text-center text-2xl font-bold text-red-600">Create New Product</h2>
+                <h2 className="text-center text-2xl font-bold text-red-600">Create New Offer</h2>
             </div>
 
             <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-lg">
@@ -82,15 +76,21 @@ export default function CreateOffer() {
                             Product Type
                         </label>
                         <div className="mt-2">
-                            <input
+                            <select
                                 id="type"
                                 name="type"
-                                type="text"
                                 value={formData.type}
                                 onChange={handleChange}
                                 required
                                 className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 sm:text-sm"
-                            />
+                            >
+                                <option value="" disabled>Select a product type</option>
+                                <option value="Laptop">Laptop</option>
+                                <option value="Tablet">Tablet</option>
+                                <option value="Smartphone">Smartphone</option>
+                                <option value="Smartwatch">Smartwatch</option>
+                            </select>
+                            {/* {errors.type && <p className="text-red-600 text-sm">{errors.type}</p>} */}
                         </div>
                     </div>
 
@@ -122,6 +122,8 @@ export default function CreateOffer() {
                                 id="year"
                                 name="year"
                                 type="number"
+                                min={2010}
+                                max={2025}
                                 value={formData.year}
                                 onChange={handleChange}
                                 required
@@ -139,7 +141,8 @@ export default function CreateOffer() {
                             <input
                                 id="price"
                                 name="price"
-                                type="text"
+                                type="number"
+                                min={1}
                                 value={formData.price}
                                 onChange={handleChange}
                                 required
@@ -156,7 +159,9 @@ export default function CreateOffer() {
                             <input
                                 id="phone"
                                 name="phone"
-                                type="number"
+                                type="tel"
+                                minLength={10}
+                                maxLength={10}
                                 value={formData.phone}
                                 onChange={handleChange}
                                 required
@@ -222,9 +227,9 @@ export default function CreateOffer() {
                         <button
                             type="submit"
                             className="flex w-full justify-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold text-white shadow-xs hover:bg-red-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                            disabled={isSubmitting}
+                            disabled={isLoading}
                         >
-                            {isSubmitting ? 'Submitting...' : 'Create Product'}
+                            Create Offer
                         </button>
                     </div>
                 </form>
