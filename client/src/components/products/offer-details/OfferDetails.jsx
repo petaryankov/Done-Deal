@@ -1,9 +1,10 @@
 import { useEffect, useState, useContext } from 'react';
 import { Link, useParams, useNavigate } from 'react-router';
-import Loader from '../../loader/Loader';
-import ErrorNotFound from '../../error-not-found/ErrorNotFond';
 import { UserContext } from '../../../api/contexts/UserContext';
+import Loader from '../../loader/Loader';
 import offerService from '../../../services/offerService';
+import ErrorNotFound from '../../error-not-found/ErrorNotFond';
+import UserIcon from '../../users/icon/UserIcon';
 
 
 export default function OfferDetails() {
@@ -74,7 +75,7 @@ export default function OfferDetails() {
                         <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8"></div>
                         <h2 className="sr-only">Product information</h2>
                         <img alt={offer.type} src={offer.img} className="w-full rounded-lg object-cover" />
-                        <p className="text-3xl tracking-tight text-gray-900">${offer.price}</p>
+                        <p className="text-3xl tracking-tight text-gray-900">€{offer.price}</p>
 
                         {/* Created by only for loged users*/}
                         {username &&
@@ -82,23 +83,26 @@ export default function OfferDetails() {
                             <div className="mt-6">
                                 <div className="flex items-center">
                                     <div className="ml-3  font-bold text-black-600 hover:text-indigo-500 mr-2">
-                                        Created by:
+                                        <UserIcon />
                                     </div>
                                     <div className="flex items-center font-bold text-indigo-600 mr-2">
                                         {offer.username}
                                     </div>
                                     <div className="flex items-center font-bold text-indigo-600">
+                                        <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M18.427 14.768 17.2 13.542a1.733 1.733 0 0 0-2.45 0l-.613.613a1.732 1.732 0 0 1-2.45 0l-1.838-1.84a1.735 1.735 0 0 1 0-2.452l.612-.613a1.735 1.735 0 0 0 0-2.452L9.237 5.572a1.6 1.6 0 0 0-2.45 0c-3.223 3.2-1.702 6.896 1.519 10.117 3.22 3.221 6.914 4.745 10.12 1.535a1.601 1.601 0 0 0 0-2.456Z" />
+                                        </svg>
                                         {offer.phone}
                                     </div>
 
                                 </div>
                                 <div className="mt-8 flex gap-4">
-                                <Link
-                                    to={`/user-offers/${offer.username}`}
-                                    className="flex items-center justify-center w-full rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                                >
-                                    {offer.username} offers
-                                </Link>
+                                    <Link
+                                        to={`/user-offers/${offer.username}`}
+                                        className="flex items-center justify-center w-full rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                    >
+                                        {offer.username} offers
+                                    </Link>
                                 </div>
                             </div>
                         }
