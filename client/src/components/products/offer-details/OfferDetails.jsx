@@ -131,14 +131,6 @@ export default function OfferDetails() {
                             </div>
                         </div>
 
-                        <div className="mt-10">
-                            <h2 className="text-sm font-medium text-gray-900">Details</h2>
-
-                            <div className="mt-4 space-y-6">
-                                <p className="text-sm text-gray-600">{offer.description}</p>
-                            </div>
-                        </div>
-
                         {/* Edit and Delete Buttons */}
                         {isPermitted &&
                             <div className="mt-8 flex gap-4">

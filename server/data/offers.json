@@ -2,84 +2,85 @@
     "1": {
         "_id": 1,
         "type": "Laptop",
-        "model": "HP NEX-SPR-LT-11HP250G9I3",
-        "year": 2020,
-        "price": "535",
+        "model": "ASUS VivoBook",
+        "year": 2023,
+        "price": "563",
         "phone": "0888123456",
         "username": "Niki",
-        "description": "The Laptop is a very well budget offer and covers all you need for browsing",
-        "img": "https://s13emagst.akamaized.net/products/35828/35827731/images/res_7dda5e376c3fb824e9d62e80b131835a.jpg?width=720&height=720&hash=C909C6F99164F7242A20AFCD0D87F888",
+        "description": "ASUS 2023 Newest Thin and Light VivoBook, 14 HD Touchscreen 2-in-1 Laptop, 4GB RAM, 256GB SSD, Intel Celeron Processor, NumberPad, Type-C,HDMI, Microsoft 365 Personal 1-Year Included, Windows 11 S",
+        "img": "https://m.media-amazon.com/images/I/811C-4LL0BL._AC_SX522_.jpg",
         "highlights": [
-            "Hand cut and sewn locally",
-            "Dyed with our proprietary colors",
-            "Pre-washed & pre-shrunk",
-            "Ultra-soft 100% cotton"
+            "Touchscreen",
+            "Anti Glare Screen",
+            "Light Weight",
+            "Intel UHD Graphics"
         ]
     },
     "2": {
         "_id": 2,
         "type": "Laptop",
-        "model": "HP NEX-SPR-LT-15HP250G9I3",
-        "year": 2021,
-        "price": "200",
+        "model": "HP Pavilion 16",
+        "year": 2024,
+        "price": "957",
         "phone": "0888723456",
         "username": "Todor",
-        "description": "Budget laptop",
-        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGNGXc-5Gry-xDhe1MdHyq_iip8Tc9W_rqTj2dk1mX8VtNkMtmHIfNvET_HRAVqTv8s74&usqp=CAU",
+        "description": "Intel Core Ultra 5-125U Processor 16 GB RAM  512 GB SSD Intel Arc Graphics WUXGA IPS Display  Win 11  Dual Speakers  Sky Blue",
+        "img": "https://m.media-amazon.com/images/I/71Zg52g2eUL._AC_SL1500_.jpg",
         "highlights": [
-            "Hand cut and sewn locally",
-            "Dyed with our proprietary colors",
-            "Pre-washed & pre-shrunk",
-            "Ultra-soft 100% cotton"
+            "THE ONE PC FOR ALL YOUR NEEDS",
+            "Up to 11hrs battery",
+            "IPS Display",
+            "Core Processors and with Intel Arc graphics built-in"
         ]
     },
     "3": {
         "_id": 3,
-        "type": "Laptop",
-        "model": "GAMING League i5-6500",
+        "type": "Tablet",
+        "model": "Samsung Galaxy Tab A9",
         "year": 2023,
-        "price": "285",
+        "price": "282",
         "phone": "0888623456",
         "username": "Joro",
-        "description": "Very good with fast 4 core new generation procesor and touch screen with 4k resolution. Free keybord and mouse included",
-        "img": "https://s13emagst.akamaized.net/products/35828/35827731/images/res_7dda5e376c3fb824e9d62e80b131835a.jpg?width=720&height=720&hash=C909C6F99164F7242A20AFCD0D87F888",
+        "description": "Samsung Galaxy Tab A9+ Android Tablet, 128GB Storage, Graphite, Complemented by a large, high-refresh-rate display for immersive entertainment",
+        "img": "https://www.kaksepravi.org/wp-content/uploads/2023/10/harakterisrika-i-tsena-na-samsung-galaxy-tab-a9.jpg",
         "highlights": [
-            "4 core procesor",
-            "Long battery life",
-            "Gaming Laptop"
+            "Large Display",
+            "3D Sound",
+            "3 Year Manufacturer Extended Warranty",
+            "High-refresh-rate display for immersive entertainment"
         ]
     },
     "4": {
         "_id": 4,
-        "type": "Laptop",
-        "model": "Lenovo Legion Y850",
-        "year": 2024,
-        "price": "1235",
+        "type": "Smartwatch",
+        "model": "Apple Watch Series 8",
+        "year": 2023,
+        "price": "537",
         "phone": "0888723456",
         "username": "Kiro",
-        "description": "Best choice for the market",
-        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGNGXc-5Gry-xDhe1MdHyq_iip8Tc9W_rqTj2dk1mX8VtNkMtmHIfNvET_HRAVqTv8s74&usqp=CAU",
+        "description": "Apple Watch Series 8 (GPS + Cellular, 41mm) Smart watch - Midnight Aluminium Case with Midnight Sport Band - Regular. Fitness Tracker, Blood Oxygen & ECG Apps, Water Resistant",
+        "img": "https://istyle.bg/pub/media/catalog/product/cache/image/400x400/beff4985b56e3afdbeabfc89641a4582/c/z/czcs_watchs8_gps_q422_41mm_starlight_aluminum_starlight_sport_band_pdp_image_position-1_t_2_1.jpg",
         "highlights": [
-            "Last year model",
-            "Gaming Laptop",
-            "Fast procesor",
-            "Touch screen"
+            "GPS + Cellular",
+            "Fitness Tracker",
+            "Water Resistant",
+            "Aluminium Case"
         ]
     },
     "5": {
         "_id": 5,
-        "type": "Laptop",
-        "model": "ASUS GAMING",
-        "year": 2025,
-        "price": "1435",
+        "type": "Smartphone",
+        "model": "Samsung Galaxy S23 Ultra",
+        "year": 2023,
+        "price": "760",
         "phone": "0888323456",
         "username": "Asen",
-        "description": "Best choice for the market",
-        "img": "https://s13emagst.akamaized.net/products/35828/35827731/images/res_7dda5e376c3fb824e9d62e80b131835a.jpg?width=720&height=720&hash=C909C6F99164F7242A20AFCD0D87F888",
+        "description": "Samsung Galaxy S23 Ultra Phantom Black 6.8 256GB 5G Unlocked & SIM Free Smartphone",
+        "img": "https://m.media-amazon.com/images/I/71cMN1XjcQL._AC_SX522_.jpg",
         "highlights": [
-            "Current year model",
-            "Modern design",
-            "Bewst quality display",
+            "S23 Ultra 5G",
+            "Unlocked for All Carriers",
+            "Take sharp photos and videos from dusk to dawn",
             "Ultra-slim"
         ]
     }

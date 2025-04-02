@@ -15,7 +15,7 @@ export default function Offer({ offer }) {
             />
 
             {/* Offer Type */}
-            <h3 className="mt-4 text-sm text-gray-700 text-center">{offer.type}</h3>
+            <h3 className="mt-4 text-sm text-gray-700 text-center">{offer.type} {offer.model}</h3>
 
             {/* Price */}
             <p className="mt-1 text-lg font-medium text-gray-900 text-center">€{offer.price}</p>
