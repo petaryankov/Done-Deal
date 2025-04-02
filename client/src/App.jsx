@@ -13,6 +13,10 @@ import CreateOffer from './components/products/create-offer/CreateOffer'
 import EditOffer from './components/products/edit-offer/EditOffer'
 import Logout from './components/users/account/logout/Logout'
 import UserOffers from './components/products/user-offers/UserOffers'
+import LaptopOffers from './components/home/laptop-offers/LaptopOffers'
+import TabletOffers from './components/home/tablet-offers/TabletOffers'
+import SmartphoneOffers from './components/home/smartphone-offers/SmartphoneOffers'
+import SmartwatchOffers from './components/home/smartwatche-offers/SmartwatchOffers'
 import './App.css'
 
 function App() {
@@ -37,6 +41,10 @@ function App() {
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='/offers' element={<Offers />} />
+                    <Route path='/offers/laptops' element={<LaptopOffers />} />
+                    <Route path='/offers/tablets' element={<TabletOffers />} />
+                    <Route path='/offers/smartphones' element={<SmartphoneOffers />} />
+                    <Route path='/offers/smartwatches' element={<SmartwatchOffers />} />
                     <Route path='/offers/:offerId' element={<OfferDetails />} />
                     <Route path='/edit/:offerId' element={<EditOffer />} />
                     <Route path='/user-offers/:username' element={<UserOffers />} />
