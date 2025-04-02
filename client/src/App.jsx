@@ -9,7 +9,7 @@ import ErrorNotFound from './components/error-not-found/ErrorNotFond'
 import Login from './components/users/login/Login'
 import Register from './components/users/regiter/Register'
 import Account from './components/users/account/Account'
-import CreateOffer from './components/products/create-offer/createOffer'
+import CreateOffer from './components/products/create-offer/CreateOffer'
 import EditOffer from './components/products/edit-offer/EditOffer'
 import Logout from './components/users/account/logout/Logout'
 import UserOffers from './components/products/user-offers/UserOffers'
@@ -40,7 +40,7 @@ function App() {
                     <Route path='/offers/:offerId' element={<OfferDetails />} />
                     <Route path='/edit/:offerId' element={<EditOffer />} />
                     <Route path='/user-offers/:username' element={<UserOffers />} />
-                    <Route path='/create' element={<CreateOffer />} />
+                    <Route path='/create' element={<CreateOffer/>} />
                     <Route path='/account' element={<Account />} />
                     <Route path='/register' element={<Register />} />
                     <Route path='/login' element={<Login />} />
