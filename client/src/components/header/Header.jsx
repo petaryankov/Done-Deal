@@ -1,9 +1,9 @@
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { UserIcon } from '@heroicons/react/24/solid';
 import { useContext, useState } from "react";
 import { Link } from 'react-router';
 import { UserContext } from '../../api/contexts/UserContext';
-import UserIcon from '../users/icon/UserIcon';
 
 const navigation = [
     { name: 'Home', path: '/' },
@@ -61,6 +61,7 @@ export default function Header() {
                         </div>
                         :
                         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+                            <UserIcon className='size-6  text-red-600 mt-1' />
                             <Link to="/account" className="text-m/6 font-bold text-red-600 block rounded-lg px-3 py-1 hover:bg-gray-100">
                                 {username}
                             </Link>

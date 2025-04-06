@@ -4,8 +4,9 @@ import { UserContext } from '../../../api/contexts/UserContext';
 import Loader from '../../loader/Loader';
 import offerService from '../../../services/offerService';
 import ErrorNotFound from '../../error-not-found/ErrorNotFond';
-import UserIcon from '../../users/icon/UserIcon';
-import UserPhoneIcon from '../../users/icon/UserPhoneIcon';
+import OfferComments from '../offer-comments/OfferComments';
+import { DevicePhoneMobileIcon} from '@heroicons/react/24/outline';
+import { UserIcon } from '@heroicons/react/24/solid';
 
 
 export default function OfferDetails() {
@@ -83,14 +84,15 @@ export default function OfferDetails() {
 
                             <div className="mt-6">
                                 <div className="flex items-center">
-                                    <div className="ml-3  font-bold text-black-600 hover:text-indigo-500 mr-2">
-                                        <UserIcon />
-                                    </div>
+                                    {/* <div className="ml-3  font-bold text-black-600 hover:text-indigo-500 mr-2">
+                                        
+                                    </div> */}
+                                    < UserIcon className="size-6 text-blue-500" />
                                     <div className="flex items-center font-bold text-indigo-600 mr-2">
                                         {offer.username}
                                     </div>
                                     <div className="flex items-center font-bold text-indigo-600">
-                                        <UserPhoneIcon />
+                                        <DevicePhoneMobileIcon className='size-6 text-blue-500' />
                                         {offer.phone}
                                     </div>
 
@@ -117,6 +119,7 @@ export default function OfferDetails() {
                             </div>
                         </div>
 
+                        {/* Highlights */}
                         <div className="mt-10">
                             <h3 className="text-sm font-medium text-gray-900">Highlights</h3>
 
@@ -130,6 +133,8 @@ export default function OfferDetails() {
                                 </ul>
                             </div>
                         </div>
+
+                        <OfferComments offer={offer} />
 
                         {/* Edit and Delete Buttons */}
                         {isPermitted &&
