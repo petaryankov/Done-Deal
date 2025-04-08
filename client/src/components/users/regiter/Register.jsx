@@ -8,26 +8,31 @@ export default function Register() {
   const navigate = useNavigate()
   const { register } = useRegister();
   const [error, setError] = useState({});
-  const [isPaaswordMissmatch, setIsPaaswordMissmatch] = useState(false);
+  const [isPasswordMissmatch, setIsPasswordMismatch] = useState(false);
   const [hasServerError, setHasServerError] = useState(false);
 
   const loginHandler = async (_, formData) => {
     const { email, username, phone, password, confirmPassword } = Object.fromEntries(formData);
     if (password !== confirmPassword) {
-      setIsPaaswordMissmatch(true);
-      setError('Password missmatch!')
+      setIsPasswordMismatch(true);
+      setError('Password mismatch!')
       return;
     }
     register(email, password, username, phone)
       .then(authData => {
-        userLoginHandler(authData);
-        navigate('/offers');
+        if (authData.code === 409) {
+          setError(authData.message)
+          setHasServerError(true);
+        } else {
+          userLoginHandler(authData);
+          navigate('/offers');
+        }
       })
       .catch(error => {
         setError('Error during registration')
         setHasServerError(true);
         console.error(error.message);
-        
+
       });
   }
   const [_, loginAction, isPending] = useActionState(loginHandler);
@@ -122,7 +127,7 @@ export default function Register() {
                 />
               </div>
             </div>
-            {isPaaswordMissmatch && (
+            {isPasswordMissmatch && (
               <p className="mt-4 text-red-600 justify-center text-center bg-amber-200 font-bold text-lg/6 rounded-md py-1.5">{error}</p>
             )}
 
