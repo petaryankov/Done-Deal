@@ -76,7 +76,7 @@ export default function OfferComments({ offer }) {
                         onChange={(e) => setNewComment(e.target.value)}
                         rows="3"
                         maxLength={MAX_COMMENT_LENGTH}
-                        className="w-1/2 p-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 resize-none overflow-auto max-h-24"
+                        className="w-1/2 mb-0 p-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 resize-none overflow-auto max-h-24"
                         placeholder="Write a comment..."
                     />
                     {/* Show character count */}
