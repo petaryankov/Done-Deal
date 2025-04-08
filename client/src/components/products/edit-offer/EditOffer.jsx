@@ -2,21 +2,11 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router';
 import Loader from '../../loader/Loader';
 import offerService from '../../../services/offerService';
+import OfferHighlights from '../offer-highlights/OfferHighlights';
 
 export default function EditOffer() {
     const { offerId } = useParams(); // Get the offerId from the URL
-    const [formData, setFormData] = useState({
-        _id: '', // Can be set dynamically if needed
-        img: '',
-        type: '',
-        year: '',
-        model: '',
-        price: '',
-        phone: '',
-        username: '',
-        description: '',
-        highlights: ['', '', '', ''], // Set initial highlights as empty strings
-    });
+    const [formData, setFormData] = useState({});
 
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
@@ -36,7 +26,8 @@ export default function EditOffer() {
                     price: data.price,
                     username: data.username,
                     description: data.description,
-                    highlights: data.highlights || ['', '', '', ''],
+                    highlights: data.highlights,
+                    comments: data.comments
                 });
             })
             .catch((error) => {
@@ -58,22 +49,21 @@ export default function EditOffer() {
         });
     };
 
-    // Handle changes to the highlights array
-    const handleHighlightChange = (e, index) => {
-        const newHighlights = [...formData.highlights];
-        newHighlights[index] = e.target.value;
-        setFormData({
-            ...formData,
-            highlights: newHighlights,
-        });
-    };
-
     // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsLoading(true);
 
-        offerService.edit(offerId, formData)
+        // Clean up empty highlights
+    const cleanedHighlights = formData.highlights.filter(highlight => highlight.trim() !== '');
+
+    // Clean up empty highlights from the formData
+    const cleanedFormData = {
+       ...formData,
+       highlights: cleanedHighlights, // Assign cleaned highlights
+   };
+
+        offerService.edit(offerId, cleanedFormData)
             .then(navigate(`/offers/${offerId}`))
             .catch((error) => {
                 console.error('Error updating offer:', error);
@@ -238,22 +228,10 @@ export default function EditOffer() {
                     </div>
 
                     {/* Product Highlights */}
-                    <div>
-                        <label htmlFor="highlights" className="block text-sm font-medium text-gray-900">
-                            Highlights
-                        </label>
-                        {formData.highlights.map((highlight, index) => (
-                            <div key={index} className="mt-2">
-                                <input
-                                    type="text"
-                                    value={highlight}
-                                    onChange={(e) => handleHighlightChange(e, index)}
-                                    required
-                                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 sm:text-sm"
-                                />
-                            </div>
-                        ))}
-                    </div>
+                    <OfferHighlights
+                        highlights={formData.highlights}
+                        setHighlights={(newHighlights => setFormData({...formData, highlights: newHighlights}))}
+                    />
 
                     <div className="flex justify-between">
                         <button

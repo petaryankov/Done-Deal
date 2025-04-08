@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router';
 import { UserContext } from '../../../api/contexts/UserContext';
 import offerService from '../../../services/offerService';
 import Loader from '../../loader/Loader';
+import OfferHighlights from '../offer-highlights/OfferHighlights';
 
 export default function CreateOffer() {
     const { username } = useContext(UserContext)
@@ -16,7 +17,8 @@ export default function CreateOffer() {
         phone: '',
         username: username,
         description: '',
-        highlights: ['', '', '', ''], // Set initial highlights as empty strings
+        highlights: [],
+        comments: [],
     });
 
     const [isLoading, setIsLoading] = useState(false);
@@ -30,24 +32,22 @@ export default function CreateOffer() {
             [name]: value,
         });
     };
-
-    // Handle highlights change (array of highlights)
-    const handleHighlightChange = (e, index) => {
-        const newHighlights = [...formData.highlights];
-        newHighlights[index] = e.target.value;
-        setFormData({
-            ...formData,
-            highlights: newHighlights,
-        });
-    };
-
+ 
     // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         setIsLoading(true);
 
-        offerService.create(formData)
+        // Clean up empty highlights
+    const cleanedHighlights = formData.highlights.filter(highlight => highlight.trim() !== '');
+    const cleanedFormData = {
+        ...formData,
+        highlights: cleanedHighlights,
+    };
+
+
+        offerService.create(cleanedFormData)
             .then(navigate('/offers'))
             .catch((error) => {
                 console.error('Error creating offer:', error);
@@ -206,22 +206,10 @@ export default function CreateOffer() {
                     </div>
 
                     {/* Product Highlights */}
-                    <div>
-                        <label htmlFor="highlights" className="block text-sm font-medium text-gray-900">
-                            Highlights
-                        </label>
-                        {formData.highlights.map((highlight, index) => (
-                            <div key={index} className="mt-2">
-                                <input
-                                    type="text"
-                                    value={highlight}
-                                    onChange={(e) => handleHighlightChange(e, index)}
-                                    required
-                                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 sm:text-sm"
-                                />
-                            </div>
-                        ))}
-                    </div>
+                    <OfferHighlights 
+                    highlights={formData.highlights}
+                    setHighlights={(newHighlights) => setFormData({...formData, highlights: newHighlights})} 
+                    />
 
                     <div>
                         <button

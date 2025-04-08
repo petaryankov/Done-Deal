@@ -4,8 +4,9 @@ import { UserContext } from '../../../api/contexts/UserContext';
 import Loader from '../../loader/Loader';
 import offerService from '../../../services/offerService';
 import ErrorNotFound from '../../error-not-found/ErrorNotFond';
-import UserIcon from '../../users/icon/UserIcon';
-import UserPhoneIcon from '../../users/icon/UserPhoneIcon';
+import OfferComments from '../offer-comments/OfferComments';
+import { DevicePhoneMobileIcon } from '@heroicons/react/24/outline';
+import { UserIcon } from '@heroicons/react/24/solid';
 
 
 export default function OfferDetails() {
@@ -61,39 +62,33 @@ export default function OfferDetails() {
     return (
         <div className="bg-white">
             <div className="pt-6">
-
-                {/* Image gallery */}
-                <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8"></div>
-
                 {/* Product info */}
-                <div className="mx-auto max-w-2xl px-4 pt-10 pb-16 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto_auto_1fr] lg:gap-x-8 lg:px-8 lg:pt-16 lg:pb-24">
+                <div className="mt-10 mx-auto max-w-2xl px-4 pt-10 pb-16 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto_auto_1fr] lg:gap-x-8 lg:px-8 lg:pt-16 lg:pb-24">
+                    
+                    {/* Offer type */}
                     <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
                         <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{offer.type}</h1>
                     </div>
 
-                    {/* Options */}
+                    {/* Image price and user */}
                     <div className="mt-4 lg:row-span-3 lg:mt-0">
                         <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8"></div>
-                        <h2 className="sr-only">Product information</h2>
                         <img alt={offer.type} src={offer.img} className="w-full rounded-lg object-cover" />
+                        <p className='mt-4 text-2xl font-bold text-gray-900'>Price</p>
                         <p className="text-3xl tracking-tight text-gray-900">€{offer.price}</p>
 
                         {/* Created by only for loged users*/}
                         {username &&
-
                             <div className="mt-6">
                                 <div className="flex items-center">
-                                    <div className="ml-3  font-bold text-black-600 hover:text-indigo-500 mr-2">
-                                        <UserIcon />
-                                    </div>
+                                    < UserIcon className="size-6 text-blue-500" />
                                     <div className="flex items-center font-bold text-indigo-600 mr-2">
                                         {offer.username}
                                     </div>
                                     <div className="flex items-center font-bold text-indigo-600">
-                                        <UserPhoneIcon />
+                                        <DevicePhoneMobileIcon className='size-6 text-blue-500' />
                                         {offer.phone}
                                     </div>
-
                                 </div>
                                 <div className="mt-8 flex gap-4">
                                     <Link
@@ -108,19 +103,25 @@ export default function OfferDetails() {
                     </div>
 
                     <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pt-6 lg:pr-8 lg:pb-16">
+
+                        {/* Model */}
+                        <div className='text-xl font-medium mt-12'>
+                            Model - {offer.model}
+                        </div>
+
                         {/* Description and details */}
                         <div>
-                            <h3 className="sr-only">Description</h3>
-
+                            <h3 className="mt-4 text-sm font-bold text-gray-900">Description</h3>
                             <div className="space-y-6">
                                 <p className="text-base text-gray-900">{offer.description}</p>
                             </div>
                         </div>
 
-                        <div className="mt-10">
-                            <h3 className="text-sm font-medium text-gray-900">Highlights</h3>
+                        {/* Highlights */}
+                        <div className="mt-4">
+                            <h3 className="text-sm font-bold text-gray-900">Highlights</h3>
 
-                            <div className="mt-4">
+                            <div className="mt-2">
                                 <ul role="list" className="list-disc space-y-2 pl-4 text-sm">
                                     {offer.highlights.map((highlight, index) => (
                                         <li key={index} className="text-gray-400">
@@ -130,6 +131,12 @@ export default function OfferDetails() {
                                 </ul>
                             </div>
                         </div>
+
+                        <div className='mt-3 text-sm font-bold text-gray-900'>
+                            Year - {offer.year}
+                        </div>
+
+                        <OfferComments offer={offer} />
 
                         {/* Edit and Delete Buttons */}
                         {isPermitted &&
