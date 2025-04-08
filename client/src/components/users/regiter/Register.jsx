@@ -1,4 +1,4 @@
-import { useActionState, useContext } from "react";
+import { useActionState, useContext, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { UserContext } from "../../../api/contexts/UserContext";
 import { useRegister } from "../../../api/authApi";
@@ -7,19 +7,28 @@ export default function Register() {
   const { userLoginHandler } = useContext(UserContext)
   const navigate = useNavigate()
   const { register } = useRegister();
+  const [error, setError] = useState({});
+  const [isPaaswordMissmatch, setIsPaaswordMissmatch] = useState(false);
+  const [hasServerError, setHasServerError] = useState(false);
 
   const loginHandler = async (_, formData) => {
     const { email, username, phone, password, confirmPassword } = Object.fromEntries(formData);
     if (password !== confirmPassword) {
-      console.error('Password missmatch!');
+      setIsPaaswordMissmatch(true);
+      setError('Password missmatch!')
       return;
     }
-
-    const authData = await register(email, password, username, phone);
-
-    userLoginHandler(authData);
-
-    navigate('/offers')
+    register(email, password, username, phone)
+      .then(authData => {
+        userLoginHandler(authData);
+        navigate('/offers');
+      })
+      .catch(error => {
+        setError('Error during registration')
+        setHasServerError(true);
+        console.error(error.message);
+        
+      });
   }
   const [_, loginAction, isPending] = useActionState(loginHandler);
 
@@ -113,6 +122,13 @@ export default function Register() {
                 />
               </div>
             </div>
+            {isPaaswordMissmatch && (
+              <p className="mt-4 text-red-600 justify-center text-center bg-amber-200 font-bold text-lg/6 rounded-md py-1.5">{error}</p>
+            )}
+
+            {hasServerError && (
+              <p className="mt-4 text-red-600 justify-center text-center bg-amber-200 font-bold text-lg/6 rounded-md py-1.5">{error}</p>
+            )}
 
             <div>
               <button

@@ -1,26 +1,37 @@
-import { Link, useNavigate } from "react-router";
+import { data, Link, useNavigate } from "react-router";
 import { useLogin } from "../../../api/authApi";
-import { useActionState, useContext } from "react";
+import { useActionState, useContext, useState } from "react";
 import { UserContext } from "../../../api/contexts/UserContext";
 
 export default function Login() {
 
     const navigate = useNavigate();
+    const [hasServerError, setHasServerError] = useState(false)
+    const [serverError, setServerError] = useState({});
     const { userLoginHandler } = useContext(UserContext)
     const { login } = useLogin();
 
 
 
     const loginHandler = async (_, formData) => {
-
         const { email, password } = Object.fromEntries(formData);
 
-        const authData = await login(email, password);
-
-        userLoginHandler(authData);
-
-        navigate('/offers');
-
+        login(email, password)
+            .then((authData) => {
+                if (authData.code === 403) {
+                    setHasServerError(true);
+                    setServerError(authData.message || "Unauthorized access.");
+                    // alert(authData.message);
+                } else {
+                    userLoginHandler(authData);
+                    navigate('/');
+                }
+            })
+            .catch((error) => {
+                setHasServerError(true);
+                setServerError("An error occurred. Please try again.");
+                console.error(error);
+            });
     };
 
     const [_, loginAction, isPending] = useActionState(loginHandler);
@@ -63,12 +74,17 @@ export default function Login() {
                                     id="password"
                                     name="password"
                                     type="password"
+                                    minLength={3}
                                     required
                                     autoComplete="current-password"
                                     className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                                 />
                             </div>
                         </div>
+
+                        {hasServerError && (
+                                <p className="mt-4 text-red-600 justify-center text-center bg-amber-200 font-bold text-lg/6 rounded-md py-1.5">{serverError}</p>
+                            )}
 
                         <div>
                             <button
