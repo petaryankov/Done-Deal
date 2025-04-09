@@ -2,13 +2,14 @@ import { useActionState, useContext, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { UserContext } from "../../../api/contexts/UserContext";
 import { useRegister } from "../../../api/authApi";
+import ErrorMessage from "../../error-message/ErrorMessage";
 
 export default function Register() {
   const { userLoginHandler } = useContext(UserContext)
   const navigate = useNavigate()
   const { register } = useRegister();
   const [error, setError] = useState({});
-  const [isPasswordMissmatch, setIsPasswordMismatch] = useState(false);
+  const [isPasswordMismatch, setIsPasswordMismatch] = useState(false);
   const [hasServerError, setHasServerError] = useState(false);
 
   const loginHandler = async (_, formData) => {
@@ -29,7 +30,7 @@ export default function Register() {
         }
       })
       .catch(error => {
-        setError('Error during registration')
+        setError('Server Error During Registration!')
         setHasServerError(true);
         console.error(error.message);
 
@@ -127,12 +128,12 @@ export default function Register() {
                 />
               </div>
             </div>
-            {isPasswordMissmatch && (
-              <p className="mt-4 text-red-600 justify-center text-center bg-amber-200 font-bold text-lg/6 rounded-md py-1.5">{error}</p>
+            {isPasswordMismatch && (
+              <ErrorMessage error={error}/>
             )}
 
             {hasServerError && (
-              <p className="mt-4 text-red-600 justify-center text-center bg-amber-200 font-bold text-lg/6 rounded-md py-1.5">{error}</p>
+              <ErrorMessage error={error}/>
             )}
 
             <div>

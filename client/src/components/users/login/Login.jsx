@@ -1,7 +1,8 @@
-import { data, Link, useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useLogin } from "../../../api/authApi";
 import { useActionState, useContext, useState } from "react";
 import { UserContext } from "../../../api/contexts/UserContext";
+import ErrorMessage from "../../error-message/ErrorMessage";
 
 export default function Login() {
 
@@ -29,7 +30,7 @@ export default function Login() {
             })
             .catch((error) => {
                 setHasServerError(true);
-                setServerError("An error occurred. Please try again.");
+                setServerError('Server Error During Login!');
                 console.error(error);
             });
     };
@@ -83,8 +84,8 @@ export default function Login() {
                         </div>
 
                         {hasServerError && (
-                                <p className="mt-4 text-red-600 justify-center text-center bg-amber-200 font-bold text-lg/6 rounded-md py-1.5">{serverError}</p>
-                            )}
+                            <ErrorMessage error={serverError} />
+                        )}
 
                         <div>
                             <button
