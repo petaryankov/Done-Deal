@@ -88,5 +88,56 @@
             "Ultra-slim"
         ],
         "comments":[]
+    },
+    "6": {
+        "_id": "54fa9876-c8d1-47cf-b361-760d0371b6e7",
+        "type": "Tablet",
+        "model": "Lenovo Tab M11",
+        "year": "2024",
+        "price": "185",
+        "img": "https://m.media-amazon.com/images/I/71x1gdm3x9L._AC_SX425_.jpg",
+        "phone": "0888123456",
+        "username": "Peter",
+        "description": "Lenovo Tab M11 Android Tablet | 11 Inch Full HD 1200p | 128 GB | Lenovo Tab Pen | WiFi | 4 GB RAM | Luna Grey | Designed for Portable Entertainment",
+        "highlights": [
+            "Superior performance with the MediaTek Helio G88 Octa-core processor.",
+            "11-inch WUXGA (1920x1200) touch screen display deliver a cinematic experience with vivid visuals and quad-speakers tuned by Dolby Atmos.",
+            "Document capture is a breeze with the AI smart scanner through the 8MP rear camera."
+        ],
+        "comments": []
+    },
+    "7": {
+        "_id": "e9fa71ab-fb6e-4cdb-bf9d-4e3875015e9b",
+        "img": "https://m.media-amazon.com/images/I/61HGlGPzunL._AC_SX679_.jpg",
+        "type": "Smartphone",
+        "year": "2024",
+        "model": "Samsung Galaxy Z Flip6",
+        "phone": "0888123456",
+        "price": "1259",
+        "username": "Peter",
+        "description": "Samsung Galaxy Z Flip6 AI Smartphone, Unlocked Android Smartphone, 512GB Storage, 50MP Camera, Blue, 3 Year Manufacturer Extended Warranty",
+        "highlights": [
+            "Smartphone is compact and eye-catching.",
+            "With Galaxy AI and a pro-level 50MP camera.",
+            "Our biggest flip battery ever."
+        ],
+        "comments": []
+    },
+    "8": {
+        "_id": "2e596119-c9aa-454a-a977-20b6295a4670",
+        "img": "https://m.media-amazon.com/images/I/51ihCx6movL._AC_SX679_.jpg",
+        "type": "Smartwatch",
+        "year": "2024",
+        "model": "Samsung Galaxy Watch6 Classic Smart",
+        "phone": "0888123456",
+        "price": "357",
+        "username": "Peter",
+        "description": "Samsung Galaxy Watch6 Classic Smart Watch, Fitness Tracker, Bluetooth, 47mm, Black, 3 Year Extended Warranty",
+        "highlights": [
+            "The rotating bezel enables an easy selection of the different functions and apps on your android smart watch.",
+            "Choose from a wide array of options and personalise your watch face with unique designs, custom dashboards and photos2.",
+            "Track your heart rate during and after cardio-focused workouts and exercises."
+        ],
+        "comments": []
     }
 }
