@@ -90,7 +90,7 @@
         "comments":[]
     },
     "6": {
-        "_id": "54fa9876-c8d1-47cf-b361-760d0371b6e7",
+        "_id": 6,
         "type": "Tablet",
         "model": "Lenovo Tab M11",
         "year": "2024",
@@ -107,7 +107,7 @@
         "comments": []
     },
     "7": {
-        "_id": "e9fa71ab-fb6e-4cdb-bf9d-4e3875015e9b",
+        "_id": 7,
         "img": "https://m.media-amazon.com/images/I/61HGlGPzunL._AC_SX679_.jpg",
         "type": "Smartphone",
         "year": "2024",
@@ -124,7 +124,7 @@
         "comments": []
     },
     "8": {
-        "_id": "2e596119-c9aa-454a-a977-20b6295a4670",
+        "_id": 8,
         "img": "https://m.media-amazon.com/images/I/51ihCx6movL._AC_SX679_.jpg",
         "type": "Smartwatch",
         "year": "2024",
