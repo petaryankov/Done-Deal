@@ -5,6 +5,7 @@
 - <a href="#design">Design</a>
 - <a href="#functionalities">Functionalities</a>
 - <a href="#Install">Install</a>
+- <a href="#Users">Demo Users</a>
 
 
 # <p id="about">About this project</p>
@@ -31,7 +32,8 @@ Only users are able to see other users offer with their phone number and usernam
    - npm run dev - runs the app in development mode;
    - open http://localhost:5173 to view it in the browser.
 
-   ### DEMO USERS
+# <p id="Users">Demo Users</p>
+#### USERS
   - peter@abv.bg       pass: 123456;
   - george@abv.bg      pass: 123456;
   - admin@abv.bg       pass: admin;
