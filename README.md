@@ -25,8 +25,13 @@ Only users are able to see other users offer with their phone number and usernam
 1. Clone the repository: https://github.com/petaryankov/Done-Deal.git
 2. Navigate to server folder (cd server):
    - npm install - command for install all packages dependances;
-   - node server.js - command to start the back-en server;
+   - node server.js - command to start the back-end server;
 4. Navigate to client folder(cd client):
    - npm install - command for install all install all packages dependances;
    - npm run dev - runs the app in development mode;
    - open http://localhost:5173 to view it in the browser.
+
+   ### DEMO USERS
+  - peter@abv.bg       pass: 123456;
+  - george@abv.bg      pass: 123456;
+  - admin@abv.bg       pass: admin;
