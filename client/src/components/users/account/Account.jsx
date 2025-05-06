@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 import { useContext } from 'react';
-import { UserContext } from '../../../api/contexts/UserContext';
+import { UserContext } from '../../../contexts/UserContext';
 
 export default function Account() {
   const { username, email, phone } = useContext(UserContext);

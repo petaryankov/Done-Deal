@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from 'react';
 import { Link, useParams, useNavigate } from 'react-router';
-import { UserContext } from '../../../api/contexts/UserContext';
+import { UserContext } from '../../../contexts/UserContext';
 import Loader from '../../loader/Loader';
 import offerService from '../../../services/offerService';
 import ErrorNotFound from '../../error-not-found/ErrorNotFond';

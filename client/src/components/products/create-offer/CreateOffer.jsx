@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router';
-import { UserContext } from '../../../api/contexts/UserContext';
+import { UserContext } from '../../../contexts/UserContext';
 import offerService from '../../../services/offerService';
 import Loader from '../../loader/Loader';
 import OfferHighlights from '../offer-highlights/OfferHighlights';

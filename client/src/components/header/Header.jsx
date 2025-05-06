@@ -3,7 +3,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { UserIcon } from '@heroicons/react/24/solid';
 import { useContext, useState } from "react";
 import { Link } from 'react-router';
-import { UserContext } from '../../api/contexts/UserContext';
+import { UserContext } from '../../contexts/UserContext';
 
 const navigation = [
     { name: 'Home', path: '/' },

@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router'
 import { useState } from 'react'
-import { UserContext } from './api/contexts/UserContext'
+import { UserContext } from './contexts/UserContext'
 import Header from './components/header/Header'
 import Home from './components/home/Home'
 import Offers from './components/products/offers/Offers'

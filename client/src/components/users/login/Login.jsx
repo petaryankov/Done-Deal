@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router";
 import { useLogin } from "../../../api/authApi";
 import { useActionState, useContext, useState } from "react";
-import { UserContext } from "../../../api/contexts/UserContext";
+import { UserContext } from "../../../contexts/UserContext";
 import ErrorMessage from "../../error-message/ErrorMessage";
 
 export default function Login() {

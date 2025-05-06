@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useContext } from 'react';
-import { UserContext } from '../../../api/contexts/UserContext';
+import { UserContext } from '../../../contexts/UserContext';
 import Loader from '../../loader/Loader';
 import offerService from '../../../services/offerService';
 import { UserIcon } from '@heroicons/react/24/solid';
