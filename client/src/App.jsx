@@ -18,6 +18,7 @@ import TabletOffers from './components/home/tablet-offers/TabletOffers'
 import SmartphoneOffers from './components/home/smartphone-offers/SmartphoneOffers'
 import SmartwatchOffers from './components/home/smartwatche-offers/SmartwatchOffers'
 import './App.css'
+import AuthGuard from './components/guards/AuthGuard'
 
 function App() {
 
@@ -36,23 +37,25 @@ function App() {
 
     return (
         <>
-            <UserContext.Provider value={{...authData, userLoginHandler, userLogoutHandler}}>
+            <UserContext.Provider value={{ ...authData, userLoginHandler, userLogoutHandler }}>
                 <Header />
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='/offers' element={<Offers />} />
                     <Route path='/offers/laptops' element={<LaptopOffers />} />
                     <Route path='/offers/tablets' element={<TabletOffers />} />
+                    <Route path='/offers/:offerId' element={<OfferDetails />} />
                     <Route path='/offers/smartphones' element={<SmartphoneOffers />} />
                     <Route path='/offers/smartwatches' element={<SmartwatchOffers />} />
-                    <Route path='/offers/:offerId' element={<OfferDetails />} />
-                    <Route path='/edit/:offerId' element={<EditOffer />} />
-                    <Route path='/user-offers/:username' element={<UserOffers />} />
-                    <Route path='/create' element={<CreateOffer/>} />
-                    <Route path='/account' element={<Account />} />
-                    <Route path='/register' element={<Register />} />
+                    <Route element={<AuthGuard />}>
+                        <Route path='/logout' element={<Logout />} />
+                        <Route path='/account' element={<Account />} />
+                        <Route path='/create' element={<CreateOffer />} />
+                        <Route path='/edit/:offerId' element={<EditOffer />} />
+                        <Route path='/user-offers/:username' element={<UserOffers />} />
+                    </Route>
                     <Route path='/login' element={<Login />} />
-                    <Route path='/logout' element={<Logout />} />
+                    <Route path='/register' element={<Register />} />
                     <Route path='/*' element={<ErrorNotFound />} />
                 </Routes>
             </UserContext.Provider>
